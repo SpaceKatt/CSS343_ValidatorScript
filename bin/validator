@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+# CSS 343 Validator Script 
+# https://github.com/SpaceKatt/CSS343_ValidatorScript
+
 echo "-------------------------------------------"
 echo
 echo "Welcome to the CSS 343 Validator script!"

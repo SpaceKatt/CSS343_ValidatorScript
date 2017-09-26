@@ -11,19 +11,17 @@ of criteria. CSS343 mandates that submitted files meet the following criteria:
 
   1. Clone repository
        - `git clone https://github.com/SpaceKatt/CSS343_ValidatorScript.git`
-  2. Move `validator.sh` into the directory with the files you want to
-     validate. 
-       - Alternatively, you can move it to a position easily
-         accessible from multiple directories where there are
-         files to validate.
+  2. Assign execute permission to script (if they haven't been set already)
+       - `chmod +x bin/validator`
+  3. Add the `bin` directory to `$PATH`.
+       - To do this manually, once per terminal session:
+        - Navigate to the root directory of this repo.
+        - Use the command: `export PATH=$PATH:$(pwd)/bin`
+       - To permanently add this to your `$PATH`:
+        - Navigate to the root directory of this repo.
+        - Use the command: `echo "export PATH=\$PATH:$(pwd)/bin" >> ~/.bashrc`
+        - You can remove it later by opening `~/.bashrc` in your favorite text editor.
 
 ### Use
 
-If the script is in the same directory as the files you want to validate:
-
-  - run `./validator.sh` in the working directory
-
-If the script is not in the same directory:
-
-  - run `PATH/validator.sh`, where `PATH` is the relative path to 
-    `validator.sh` from the working directory
+Run `validator` in the working directory containing `.h` and `.cpp` files.
