@@ -1,4 +1,4 @@
-# CSS342 Validator Script
+# CSS343 Validator Script
 
 The purpose of this script is to validate a set of files against a set
 of criteria. CSS343 mandates that submitted files meet the following criteria:
