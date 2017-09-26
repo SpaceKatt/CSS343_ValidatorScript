@@ -20,3 +20,16 @@ grep -cP '\t' *.cpp *.h
 echo
 echo "Location of violations:"
 grep -nP '\t' *.cpp *.h
+echo
+echo "-------------------------------------------"
+echo "Testing to see if your files compile..."
+g++ *.cpp -o test_NAME.out
+echo 
+echo "If you see no error, then your files compiled!"
+echo
+echo "Cleaning up generated file..."
+echo "If compilation failed, then you'll see an error here..."
+rm test_NAME.out
+echo
+echo "Finished!"
+
