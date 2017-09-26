@@ -15,12 +15,12 @@ of criteria. CSS343 mandates that submitted files meet the following criteria:
        - `chmod +x bin/validator`
   3. Add the `bin` directory to `$PATH`.
        - To do this manually, once per terminal session:
-        - Navigate to the root directory of this repo.
-        - Use the command: `export PATH=$PATH:$(pwd)/bin`
+           1. Navigate to the root directory of this repo.
+           2. Use the command: `export PATH=$PATH:$(pwd)/bin`
        - To permanently add this to your `$PATH`:
-        - Navigate to the root directory of this repo.
-        - Use the command: `echo "export PATH=\$PATH:$(pwd)/bin" >> ~/.bashrc`
-        - You can remove it later by opening `~/.bashrc` in your favorite text editor.
+           1. Navigate to the root directory of this repo.
+           2. Use the command: `echo "export PATH=\$PATH:$(pwd)/bin" >> ~/.bashrc`
+               - You can remove it later by opening `~/.bashrc` in your favorite text editor.
 
 ### Use
 
