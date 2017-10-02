@@ -1,39 +1,63 @@
 #!/usr/bin/env bash
-# CSS 343 Validator Script 
+# CSS 343 Validator Script
 # https://github.com/SpaceKatt/CSS343_ValidatorScript
 
-echo "-------------------------------------------"
-echo
-echo "Welcome to the CSS 343 Validator script!"
-echo
-echo "-------------------------------------------"
-echo "Checking for lines over 80-char..."
-echo
-echo "Number of violations per file:"
-grep -c '.\{80\}' *.cpp *.h
-echo
-echo "Location of violations:"
-grep -n '.\{80\}' *.cpp *.h
-echo 
-echo
-echo "-------------------------------------------"
-echo "Checking for tab characters... (use spaces!)"
-echo
-echo "Number of violations per file:"
-grep -cP '\t' *.cpp *.h
-echo
-echo "Location of violations:"
-grep -nP '\t' *.cpp *.h
-echo
-echo "-------------------------------------------"
-echo "Testing to see if your files compile..."
-g++ *.cpp -o test_NAME.out
-echo 
-echo "If you see no error, then your files compiled!"
-echo
-echo "Cleaning up generated file..."
-echo "If compilation failed, then you'll see an error here..."
-rm test_NAME.out
-echo
-echo "Finished!"
+# argument flags
 
+# minimal output, only errors
+flagMinimal="false"
+# addtional args should go here
+
+while getopts "m" flag; do
+  case "${flag}" in
+    m) flagMinimal="true" ;;
+    *) error "Unexpected option ${flag}" ;;
+  esac
+done
+
+if [ "$flagMinimal" = "false" ]
+then
+  echo "-------------------------------------------"
+  echo
+  echo "Welcome to the CSS 343 Validator script!"
+  echo
+  echo "-------------------------------------------"
+  echo "Checking for lines over 80-char..."
+  echo
+  echo "Number of 80-char violations per file:"
+  grep -c '.\{80\}' *.cpp *.h
+  echo
+fi
+echo "Location of 80-char violations:"
+grep -n '.\{80\}' *.cpp *.h
+
+if [ "$flagMinimal" = "false" ]
+then
+  echo
+  echo
+  echo "-------------------------------------------"
+  echo "Checking for tab characters... (use spaces!)"
+  echo
+  echo "Number of tab violations per file:"
+  grep -cP '\t' *.cpp *.h
+  echo
+fi
+echo "Location of tab violations:"
+grep -nP '\t' *.cpp *.h
+if [ "$flagMinimal" = "false" ]
+then
+  echo
+  echo "-------------------------------------------"
+  echo "Testing to see if your files compile..."
+  g++ --std=c++11 *.cpp -o /dev/null
+  echo
+  echo "If you see no error, then your files compiled!"
+  echo
+  echo "Finished!"
+else
+  if g++ --std=c++11 *.cpp -o /dev/null; then
+    echo "Build success!";
+  else
+    echo "Build Fail";
+  fi
+fi
