@@ -25,3 +25,7 @@ of criteria. CSS343 mandates that submitted files meet the following criteria:
 ### Use
 
 Run `validator` in the working directory containing `.h` and `.cpp` files.
+
+| Argument | Description | Example |
+| -------- | ----------- | ------- |
+| `-m`     | Minimal output mode. Only shows where 80-char and tab character violations are. `g++` will still display errors and warnings, but will also display a message indicating pass or fail status. | `validator -m` |
